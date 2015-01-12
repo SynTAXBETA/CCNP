@@ -1,28 +1,72 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#include <iostream>
+#include <string>
+#include "binsearch"
+using namespace BS;
 
-# Precompiled Headers
-*.gch
-*.pch
+int _comp(char *a, char *b);
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+template<typename T>
+void print_array(T *array, size_t array_size)
+{
+	for(int i = 0; i < array_size; ++i)
+	{
+		std::cout << "   " << array[i] << std::endl;
+	}
+}
 
-# Fortran module files
-*.mod
+void example1();
+void example2();
+void example3();
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+int main()
+{
+	example3();
+	return 0;
+}
 
-# Executables
-*.exe
-*.out
-*.app
+int _comp(char *a, char *b)
+{
+	return strcmp(a, b);
+}
+
+void example1()
+{
+	int array[] = {-1, 7, 9, 0, 17, 13, 73};
+	int array_size = sizeof(array)/sizeof(array[0]);
+	sort<int>(array, array_size, comp);
+	std::cout << "Array elements:\n";
+	print_array(array, array_size);
+	std::cout << "\nBinary Search\n";
+	std::cout << "   search: 13\n";
+	std::cout << "   search result: " << bin_search<int>(0, array_size, array, 13, comp);
+}
+
+void example2()
+{
+	char array[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+	int array_size = sizeof(array)/sizeof(array[0]);
+	std::cout << "Array elements:\n";
+	print_array(array, array_size);
+	std::cout << "\nBinary Search:\n";
+	std::cout << "   enter your search: ";
+	char search;
+	std::cin >> search;
+	std::cout << "   search result: " << bin_search<char>(0, array_size, array, search, comp);
+}
+
+void example3()
+{
+	char *array[] = {"Michelle", "Laetitia", "Cindy", "Christina", "Monica", "Claudia"};
+	int array_size = sizeof(array)/sizeof(array[0]);
+	std::cout << "\nArray elements \n\nbefore sorting:\n";
+	print_array(array, array_size);
+	sort(array, array_size, _comp);
+	std::cout << "\nafter:\n";
+	print_array(array, array_size);
+	std::cout << "\nBinary Search\n";
+	std::string search = "Claudia";
+	std::cout << "   search: " << search;
+	std::cout << "\n   search result:= " << bin_search(0, array_size, array, (char*)search.c_str(), _comp);
+}
+
+
