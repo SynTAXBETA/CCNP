@@ -11,9 +11,10 @@ Pasul 3.2: Incapsuleaza pachetul intr-un data-link frame, cu destinatia L2 luata
 Pasul 4: Daca nu este local, trimite la default gateway:
 Pasul 4.1: Gaseste adresa MAC a default gateway in tabela ARP pe care o are deja sau trimite un ARP request. 
 Pasul 4.2: Incapsuleaza pachetul intr-un data-link frame, cu destinatia L2 luata din tabela ARP
-*asdasd
-*asdasd
-  * SUB ITEM
+
+
+*sadasdas
+*asdas
 
 # Large text
 
